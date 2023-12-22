@@ -1,0 +1,32 @@
+{
+  "name": "client_management",
+  "version": "1.0.0",
+  "description": "Customer management project for small businesses.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx src/index.ts",
+    "start:dev": "tsx watch src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloSantos1109/client_management.git"
+  },
+  "author": "Paulo Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PauloSantos1109/client_management/issues"
+  },
+  "homepage": "https://github.com/PauloSantos1109/client_management#readme",
+  "dependencies": {
+    "@prisma/client": "^5.7.1",
+    "nodemon": "^3.0.2",
+    "prisma": "^5.7.1",
+    "sqlite3": "^5.1.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0"
+  }
+}

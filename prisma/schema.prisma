@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id               Int       @id @default(autoincrement())
+  clientName       String
+  cpf              String
+  dateOfBirth      DateTime?
+  registrationDate DateTime
+  model            String    
+  brand            String
+  licensePlate     String
+  osTickts         OSTickt[]  // Relacionamento um-para-muitos com a tabela OSTickt
+
+  @@map("cliente")
+}
+
+model employees {
+  id               Int       @id @default(autoincrement())
+  employee         String
+  cpf              String
+  dateOfBirth      DateTime
+  registrationDate DateTime
+  office           String
+  osTickts         OSTickt[]  // Relacionamento um-para-muitos com a tabela OSTickt
+
+  @@map("employees")  
+}
+
+model OSTickt {
+  id               Int       @id @default(autoincrement())
+  title            String 
+  descricao        String
+  registrationDate DateTime
+  status           Boolean
+  clientId         Int
+  client           Cliente @relation(fields: [clientId], references: [id])
+  employeeId       Int
+  employee         employees @relation(fields: [employeeId], references: [id]) // Relacionamento com a tabela employees
+  clientName       String
+  model            String
+  brand            String
+  licensePlate     String
+
+  @@map("os_tickt")
+}
+
