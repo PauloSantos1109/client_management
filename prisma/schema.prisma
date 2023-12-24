@@ -10,11 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Customer table
+
 model Cliente {
-  id               Int       @id @default(autoincrement())
-  clientName       String
-  cpf              String
-  dateOfBirth      DateTime?
+  id               Int       @id @default(autoincrement())  
+  clientName       String    
+  cpf              String     //Identity of the brazil
+  dateOfBirth      DateTime?  
   registrationDate DateTime
   model            String    
   brand            String
@@ -26,7 +28,7 @@ model Cliente {
 
 model employees {
   id               Int       @id @default(autoincrement())
-  employee         String
+  employee         String    
   cpf              String
   dateOfBirth      DateTime
   registrationDate DateTime
@@ -37,7 +39,8 @@ model employees {
 }
 
 model OSTickt {
-  id               Int       @id @default(autoincrement())
+  id               Int       @id  @default(autoincrement())
+  osNumber         Int       @unique
   title            String 
   descricao        String
   registrationDate DateTime
