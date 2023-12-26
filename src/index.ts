@@ -1,27 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+// index.ts
+import express from 'express';
+import routes from './routes/route';
 
-const prisma = new PrismaClient();
+const app = express();
+const port = 5500;
 
-interface User {
-    clientName: string;
-    cpf: string;
-    dateOfBirth?: Date;
-    registrationDate: Date;
-    model: string;
-    brand: string;
-    licensePlate: string;
-}
+// Utiliza as rotas definidas no arquivo route.ts
+app.use('/api', routes);
 
-async function saveUserToDataBase(user: User) {
-    try {
-        const newClient = await prisma.cliente.create({
-            data: user,
-        });
-        console.log("Novo cliente salvo:", newClient);
-    } catch (error) {
-        console.error(`Erro ao salvar o cliente ${error}`);
-    } finally {
-        await prisma.$disconnect();
-    }
-}
-
+// Inicia o servidor
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});

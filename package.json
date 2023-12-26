@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsx src/index.ts",
-    "start:dev": "tsx watch src/index.ts"
+    "start:dev": "tsx watch src/routes/route.ts",
+    "start:express": "nodemon --exec ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/PauloSantos1109/client_management#readme",
   "dependencies": {
     "@prisma/client": "^5.7.1",
+    "express": "^4.18.2",
     "nodemon": "^3.0.2",
     "prisma": "^5.7.1",
     "sqlite3": "^5.1.6",
@@ -27,6 +29,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "tsx": "^4.7.0"
   }
 }
