@@ -2,7 +2,7 @@
 // routes.ts
 import express, { Router, Request, Response } from 'express';
 import * as ClientCrud from '../crud/created';
-import { ERROR } from 'sqlite3';
+
 
 const router = Router();
 
@@ -13,7 +13,59 @@ router.get("/teste", (req, res) => {
     res.send('<p>TESTE</p>')
 });
 
-router.post('/testpost', async (req: Request, res: Response) => {
+router.post('/client', async (req: Request, res: Response) => {
+  try {
+
+    console.log('Recebida uma solicitação POST em /api/testpost');
+    // Código da sua função createClient
+    
+    const newClient = await ClientCrud.createClient(req.body);
+    
+    console.log(req.body)
+    res.json(newClient);
+ 
+  } catch (error) {
+
+    console.error('Erro ao processar a solicitação POST:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* router.post('/testpost', async (req: Request, res: Response) => {
   try {
     console.log('Recebida uma solicitação POST em /api/testpost');
     // Código da sua função createClient
@@ -40,7 +92,7 @@ router.post('/clients', async (req: Request, res: Response) => {
     }
 });
 
-export default router;
+export default router; */
 
 
   
