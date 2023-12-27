@@ -1,16 +1,17 @@
 import express, { Router, Request, Response } from 'express';
-import * as ClientCrud from '../crud/created';
+import * as ClientCrud from '../crud/customer_Creation';
 import * as DataProcessing from '../dataProcessing/dataProcessing';
 
 const router = Router();
 
-// Rota de teste
+// test route
 router.get("/teste", (req, res) => {
   console.log('Test performed');
   res.send('Test performed');
   res.send('<p>TESTE</p>')
 });
 
+/* Route to process and record new customer data  */
 router.post('/client', async (req: Request, res: Response) => {
   try {
     console.log('Recebida uma solicitação POST em /api/testpost');
