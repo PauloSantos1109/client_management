@@ -1,5 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import * as ClientCrud from '../crud/customer_Creation';
+import * as Employee from '../crud/CreateEmployees';
 import * as DataProcessing from '../dataProcessing/dataProcessing';
 
 const router = Router();
@@ -27,6 +28,17 @@ router.post('/client', async (req: Request, res: Response) => {
   }
 });
 
+router.post('/employee', async (req: Request, res: Response) => {
+  try {
+    console.log('Recebida uma solicitação POST em /api/employee');
+
+    const newEmployee = await Employee.createEmployee(req.body);
+    res.json(newEmployee)
+  } catch (error) {
+    console.error('Erro ao processar a solicitação POST:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
 
 
 export default router;
