@@ -39,14 +39,14 @@ model employees {
 }
 
 model OSTickt {
-  id               Int       @id  @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   osNumber         Int       @unique
   title            String 
   descricao        String
   registrationDate DateTime
   status           Boolean
   clientId         Int
-  client           Cliente @relation(fields: [clientId], references: [id])
+  client           Cliente @relation(fields: [clientId], references: [id]) // Relacionamento com a tabela Cliente
   employeeId       Int
   employee         employees @relation(fields: [employeeId], references: [id]) // Relacionamento com a tabela employees
   clientName       String
