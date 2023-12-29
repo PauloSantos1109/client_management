@@ -1,14 +1,6 @@
+import { InputObjectClient } from "../model/model"; '../model/model'
 /* Interface */
-interface InputObject {
-  id: number; 
-  clientName: string;
-  cpf: string;
-  dateOfBirth: Date;
-  registrationDate: Date;
-  model: string;
-  brand: string;
-  licensePlate: string;
-}
+
   /* Customer name formatting */
   function formatClientName(clientName: string): string {
     return clientName.toLowerCase();
@@ -67,7 +59,7 @@ interface InputObject {
     }
   }
   
-export function sendToAPI(value: InputObject): InputObject {
+export function sendToAPI(value: InputObjectClient): InputObjectClient {
   const outputObject = {
     id: value.id, 
     clientName: formatClientName(value.clientName),
@@ -79,7 +71,6 @@ export function sendToAPI(value: InputObject): InputObject {
     licensePlate: validateLicensePlate(value.licensePlate),
   };
 
-  // Retornar o objeto processado
   return outputObject;
 }
 

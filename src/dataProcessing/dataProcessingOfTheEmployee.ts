@@ -1,9 +1,11 @@
 import { InputObjectEmployee } from "../model/model";
 
+/* Customer name Employee */
 function formatEmployee(employee: string): string {
     return employee.toLocaleLowerCase();
 }
 
+/* Formatting the customer's CPF */
 function formatCPF(cpf: string): string {
     return cpf.normalize('NFC').replace(/[\u0300-\u036f\W_]/g, '');
 }
@@ -11,16 +13,16 @@ function formatCPF(cpf: string): string {
 /* Date formatting */
 function formatDateString(dateString: Date): Date {
     try {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) {
-            throw new Error("Data inválida.");
-        }
-        return date;
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        throw new Error("Data inválida.");
+      }
+      return date;
     } catch (error) {
-        console.error(`Erro ao formatar a data: ${error}`);
-        return new Date();
+      console.error(`Erro ao formatar a data: ${error}`);
+      return new Date
     }
-}
+  }
 
 export function sendToAPIEmployee(value: InputObjectEmployee): InputObjectEmployee {
     
@@ -30,7 +32,7 @@ export function sendToAPIEmployee(value: InputObjectEmployee): InputObjectEmploy
         cpf: formatCPF(value.cpf),
         dataOfBirth: formatDateString(value.dataOfBirth),
         registrationDate: formatDateString(value.registrationDate),
-        office: value.office,
+        office: value.office.toLocaleLowerCase(),
     };
 
     return outputObject;
