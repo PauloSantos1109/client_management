@@ -1,4 +1,4 @@
-import { InputObjectEmployee } from "../model/model";
+import { InputObjectEmployee } from "../moldes/employee.model";
 
 /* Customer name Employee */
 function formatEmployee(employee: string): string {

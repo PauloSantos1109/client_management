@@ -1,4 +1,4 @@
-import { InputObjectClient } from "../model/model"; '../model/model'
+import { InputObjectClient } from "../moldes/client.model"; 
 /* Interface */
 
   /* Customer name formatting */
