@@ -2,7 +2,7 @@ import { PrismaClient, employees } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function createEmployee(employeeData: Omit<employees, 'id'>): Promise<employees> {
+export async function createEmployee(employeeData: employees) {
     try {
         const newEmployee = await prisma.employees.create({
             data: employeeData,
