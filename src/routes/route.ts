@@ -2,15 +2,36 @@ import express, { Router, Request, Response } from 'express';
 import * as ClientCrud from '../crud/customer_Creation';
 import * as Employee from '../crud/CreateEmployees';
 import * as DataProcessing from '../dataProcessing/dataProcessingOfTheClient';
+import { getDateClient, getDateEmployee } from '../crud/getData'
+
 
 const router = Router();
 
-// test route
-router.get("/teste", (req, res) => {
-  console.log('Test performed');
-  res.send('Test performed');
-  res.send('<p>TESTE</p>')
+// gets
+router.get("/client/users", async (req, res) => {
+  try {
+    const clients = await getDateClient(); 
+    res.json(clients); 
+
+  } catch (error) {
+    console.error('Erro na rota: ', error)
+    res.status(500).json({ error: 'Internal Server Error' });
+  } 
 });
+
+router.get("/employee/users", async (req, res) => {
+  try {
+    const employee = await getDateEmployee();
+    res.json(employee)
+    
+  } catch (error) {
+    console.error('Erro na rota: ', error)
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+/* Post */
 
 /* Route to process and record new customer data  */
 router.post('/client', async (req: Request, res: Response) => {
